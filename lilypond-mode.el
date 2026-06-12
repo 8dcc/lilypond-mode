@@ -107,7 +107,7 @@ Finds file lilypond-words.el from load-path."
            (file-content (with-temp-buffer
                            (insert-file-contents filename)
                            (buffer-string)))
-           (words (split-string file-content "\\(\\n\\\\|\\r\\n\\)" t)))
+           (words (split-string file-content "\r?\n" t)))
       (dolist (word words)
         (if (not (string-empty-p word))
             (lilypond-add-dictionary-word (list (cons word 1)))))))
