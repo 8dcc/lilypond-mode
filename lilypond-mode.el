@@ -1087,6 +1087,7 @@ The Insert Tag -menu is split into parts if it is long enough."
     (message "%s" "lilypond-imenu already exists.")))
 (put 'lilypond-add-imenu-menu 'menu-enable '(not lilypond-imenu))
 
+;;;###autoload
 (define-derived-mode lilypond-mode prog-mode "lilypond-mode"
   "Major mode for editing LilyPond music files.
 
@@ -1199,6 +1200,11 @@ lilypond-command-alist\t\talist from name to command"
   (comint-default-send (ilisp-process) "(set! %load-path (cons \"/usr/share/ilisp/\" %load-path))")
   (comint-default-send (ilisp-process) "(use-modules (guile-user) (guile-ilisp))")
   (comint-default-send (ilisp-process) "(newline)"))
+
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.ly\\'" . lilypond-mode))
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.ily\\'" . lilypond-mode))
 
 (provide 'lilypond-mode)
 ;;; lilypond-mode.el ends here
